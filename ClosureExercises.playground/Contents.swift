@@ -165,22 +165,27 @@ var result = splitter(data: data, classifier: classifier)
 for re in result{
     print(re, terminator: " ")
 }
-
+print()
 
 
 
 // 11. Write a function, palindromic(num:) that will return true if its parameter, an Int, is palindromic (it reads the same backwards as forwards). For example "1221" is palindromic, whereas "1223" is not. [Hint: Convert an Int into a String. Then reverse it, and see if the two are equal.]
 
 func palindromic(num:Int) -> Bool {
-    var numString = String(num)
-    var reversedCharacterArray = numString.reversed()
-    var reversedString = ""
-    
-    var reverseNumber = Int(reversedString)
-    if (numString == reversedString){
+    var num1 = num
+    var reverseNum:Int = 0
+    while (num1 > 0){
+        let remiander = num1 % 10
+        reverseNum = reverseNum * 10 + remiander
+        num1 = num1 / 10
+        
+    }
+    if (num == reverseNum){
         return true
     }
-    return false
+    else{
+        return false
+    }
 }
 
 
@@ -192,8 +197,9 @@ for i in 1...500{
 
 
 
-
 // 13. Use filter to return those values that are palindromic
 
-aThou.filter(<#T##isIncluded: (Int) throws -> Bool##(Int) throws -> Bool#>)
+let palindrome = aThou.filter{palindromic(num: $0 )}
+print(palindrome)
 
+print()
