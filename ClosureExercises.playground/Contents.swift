@@ -41,11 +41,12 @@ struct Mouse: Equatable, CustomStringConvertible {
     
     var description: String{
         var message:String = ""
-        if (self.x.isNaN || self.y.isNaN || self.batteryLife.isNaN){
-            message = "replace with actual values to 1 decimal"
-            
+        if (batteryLife>=2.5){
+            message = "Position:(\(x), \(y)), Battery Life: Good "
         }
-        else{return " "}
+        else{
+            message = "Position:(\(x), \(y)), Battery Life: Poor "
+        }
         return message
     }
 }
@@ -72,13 +73,14 @@ var cage:[Mouse] = [mice1, mice2, mice3]
 
 for i in 0...cage.count-1{
     if (cage[i] == cage[1]){
-        print("true")
+        print("true", terminator:" ")
     }
     else{
-        print("False")
+        print("False", terminator: " ")
     }
 }
 
+print()
 
 
 // 5. Write a function, quadrant(mouse:) to return a String "NE", "NW", "SE", "SW" or "ON AXIS" depending on where a Mouse is positioned relative to the origin. (e.g., if it is in the top-right quadrant, return "NE"; top-left quadrant, "NW"; bottom-left quadrant, "SW"; bottom-right quadrant, "SE". [You have already done a question like this.]
@@ -151,7 +153,7 @@ func splitter(data:[Int] , classifier: (Int) -> Bool) -> [Int]{
 
 // Only use basic Swift programming constructs. Do not use any other function calls other than classsifier() and append()
 
-var classifier: (Int) -> Bool = {x in return (x%2 == 0)}
+var classifier: (Int) -> Bool = { $0 % 2 == 0}
 
 
 
